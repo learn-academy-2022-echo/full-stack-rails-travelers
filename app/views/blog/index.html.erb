@@ -1,7 +1,13 @@
 <h1>Traveler Blog:</h1>
 <ul>
-<li>
 
-<%= @blogs %>
-</li>
+<% @blogs.map do |value|%>
+    <li>
+    <%= link_to value.title, blog_path(value) %>
+    
+<% end %>
+<br>
+<br>
+<br>
+<%= link_to 'Add a Blog Post', new_blog_path %>
 </ul>

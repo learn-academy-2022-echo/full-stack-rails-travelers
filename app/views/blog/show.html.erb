@@ -9,9 +9,11 @@
 <br>
 <br>
 
-<%= button_to 'Delete Item', delete_blog_path(@blog), method: :delete %>
+<%= button_to 'Delete Item', delete_blog_path(@blog), method: :delete, form:{data: { 'turbo-confirm': 'This will permanently delete your blog post?'} }%>
 
-
+<br>
+<br>
+<%= link_to 'Edit a Blog Post', edit_blog_path(@blog)%>
 <br>
 <br>
 

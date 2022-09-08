@@ -1,4 +1,5 @@
 class BlogController < ApplicationController
+    
     def index
         @blogs = Blog.all
     end
@@ -22,6 +23,23 @@ class BlogController < ApplicationController
         end
     end
     
+    def edit
+        @blog = Blog.find(params[:id])
+    end
+
+    def update
+
+        @blog = Blog.find(params[:id])
+        @blog.update(blog_params)
+        if @blog.title == '' 
+            redirect_to edit_blog_path
+        elsif @blog.content == ''
+            redirect_to edit_blog_path
+        else
+            redirect_to blogs_path 
+        end
+    end
+
     def destroy
         @blog = Blog.find(params[:id])
         if @blog.destroy
@@ -30,6 +48,7 @@ class BlogController < ApplicationController
     end
 
 private
+
     def blog_params
         params.require(:blog).permit(:title, :content)
     end

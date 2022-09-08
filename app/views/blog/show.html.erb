@@ -1,0 +1,20 @@
+<h1>Blog Post:</h1>
+<ul>
+<p>Title:</p>
+<%= @blog.title %>
+
+<p>Content:</p>
+<%= @blog.content %>
+
+<br>
+<br>
+
+<%= button_to 'Delete Item', delete_blog_path(@blog), method: :delete %>
+
+
+<br>
+<br>
+
+<%= link_to 'Back to Home', blogs_path %>
+
+</ul>

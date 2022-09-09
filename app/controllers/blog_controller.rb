@@ -1,7 +1,7 @@
 class BlogController < ApplicationController
     
     def index
-        @blogs = Blog.all
+        @blogs = Blog.all.sort
     end
 
     def new
@@ -14,12 +14,10 @@ class BlogController < ApplicationController
 
     def create
         @blog = Blog.create(blog_params)
-        if @blog.title == ''
-            redirect_to new_blog_path
-        elsif @blog.content == ''
-            redirect_to new_blog_path
+        if @blog.valid? 
+            redirect_to blogs_path
         else
-            redirect_to blogs_path 
+            redirect_to new_blog_path 
         end
     end
     
@@ -31,12 +29,10 @@ class BlogController < ApplicationController
 
         @blog = Blog.find(params[:id])
         @blog.update(blog_params)
-        if @blog.title == '' 
-            redirect_to edit_blog_path
-        elsif @blog.content == ''
-            redirect_to edit_blog_path
+        if @blog.valid?
+            redirect_to blogs_path(@blog)
         else
-            redirect_to blogs_path 
+            redirect_to new_blog_path(@blog)
         end
     end
 

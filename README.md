@@ -1,24 +1,28 @@
-# README
+As a developer, I have been commissioned to create an application where a user can see and create blog posts.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+As a developer, I can create a full-stack Rails application.
+As a developer, my blog post can have a title and content.
+As a developer, I can add new blog posts directly to my database.
+As a user, I can see all the blog titles listed on the home page of the application.
+As a user, I can click on the title of a blog and be routed to a page where I see the title and content of the blog post I selected.
+As a user, I can navigate from the show page back to the home page.
+As a user, I see a form where I can create a new blog post.
+As a user, I can click a button that will take me from the home page to a page where I can create a blog post.
+As a user, I can navigate from the form back to the home page.
+As a user, I can click a button that will submit my blog post to the database.
+As a user, I when I submit my post, I am redirected to the home page.
 
-Things you may want to cover:
+Stretch Challenges
+As a user, I can delete my blog post.
+As a user, I can update my blog post.
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+As a developer, I can ensure that all blog posts have titles and content for each post.
+As a developer, I can ensure that all blog post titles are unique.
+As a developer, I can ensure that blog post titles are at least 10 characters.
+### blog.rb file
+        class Blog < ApplicationRecord
+            validates :title, :content, presence: true
+            validates :title, length: { minimum: 10 }
+            validates :title, uniqueness: true 
+        end
